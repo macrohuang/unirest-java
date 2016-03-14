@@ -25,6 +25,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 package com.mashape.unirest.request;
 
+import com.mashape.unirest.http.HttpMethod;
+import com.mashape.unirest.http.utils.Base64Coder;
+import com.mashape.unirest.http.utils.UHC;
+import com.mashape.unirest.http.utils.URLParamEncoder;
+import com.mashape.unirest.request.body.Body;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -37,11 +43,6 @@ import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.mashape.unirest.http.HttpMethod;
-import com.mashape.unirest.http.utils.Base64Coder;
-import com.mashape.unirest.http.utils.URLParamEncoder;
-import com.mashape.unirest.request.body.Body;
-
 public class HttpRequest extends BaseRequest {
 
 	private HttpMethod httpMethod;
@@ -53,6 +54,11 @@ public class HttpRequest extends BaseRequest {
 		this.httpMethod = method;
 		this.url = url;
 		super.httpRequest = this;
+		if (UHC.getAll()!=null){
+		    for (String key:UHC.getAll().keySet()){
+		        header(key, UHC.get(key));
+		    }
+		}
 	}
 
 	public HttpRequest routeParam(String name, String value) {

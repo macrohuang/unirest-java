@@ -4,7 +4,7 @@
 	<groupId>com.mashape.unirest</groupId>
 	<artifactId>unirest-java</artifactId>
 	<packaging>jar</packaging>
-	<version>1.4.9-SNAPSHOT</version>
+	<version>1.4.9.patch</version>
 	<name>unirest-java</name>
 	<description>Simplified, lightweight HTTP client library</description>
 	<url>http://unirest.io/</url>
@@ -56,8 +56,8 @@
 					<fork>true</fork>
 					<meminitial>128m</meminitial>
 					<maxmem>512m</maxmem>
-					<source>1.5</source>
-					<target>1.5</target>
+					<source>1.7</source>
+					<target>1.7</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
@@ -139,5 +139,15 @@
 			<version>${jackson.version}</version>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+    </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>Baijia_Release</id>
+            <url>http://nexus.baijiahulian.com/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>Baijia_Snapshot</id>
+            <url>http://nexus.baijiahulian.com/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
